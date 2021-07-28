@@ -1,4 +1,4 @@
-# Management Strategy Evaluation (MSE) using FLR
+# Management Strategy Evaluation (MSE) for assessment bias using FLR
 
 ## Description
 NorthSea.saithe.MSE is a management strategy evaluation (MSE) framework originally developed for North Sea saithe (Pollachius virens) in Subareas 4, 6 and Division 3.a (North Sea, Rockall and West of Scotland, Skagerrak and Kattegat) using the Fisheries Library in R (FLR) mse package as part of the Workshop on North Sea stocks Management Strategy Evaluation (WKNSMSE).
