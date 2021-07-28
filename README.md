@@ -1,7 +1,7 @@
-# Management Strategy Evaluation (MSE) for assessment bias using FLR
+# Management Strategy Evaluation (MSE) for estimation bias using FLR
 
 ## Description
-mse4bias is a management strategy evaluation (MSE) framework to evaluate management implications of persistent bias in stock assessment. The framework was originally developed using the Fisheries Library in R (FLR) mse package for North Sea saithe (Pollachius virens) in Subareas 4, 6 and Division 3.a (North Sea, Rockall and West of Scotland, Skagerrak and Kattegat) as part of the [Workshop on North Sea stocks Management Strategy Evaluation (WKNSMSE)](https://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/Fisheries%20Resources%20Steering%20Group/2019/WKNSMSE/ICES%20WKNSMSE%20Report%202019.pdf).
+mse4bias is a management strategy evaluation (MSE) framework to evaluate management implications of persistent estimation bias in stock assessment. The framework was originally developed using the Fisheries Library in R (FLR) mse package for North Sea saithe (Pollachius virens) in Subareas 4, 6 and Division 3.a (North Sea, Rockall and West of Scotland, Skagerrak and Kattegat) as part of the [Workshop on North Sea stocks Management Strategy Evaluation (WKNSMSE)](https://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/Fisheries%20Resources%20Steering%20Group/2019/WKNSMSE/ICES%20WKNSMSE%20Report%202019.pdf).
 
 ## Prerequisites
 Install the following packages:
