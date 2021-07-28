@@ -5,7 +5,7 @@ NorthSea.saithe.MSE is a management strategy evaluation (MSE) framework original
 
 ## Prerequisites
 Install the following packages:
-```{r, include = FALSE}
+```{r, include = T}
 install.packages(c("foreach", "DoParallel", "dplyr", "tidyr", "data.table")) 
 
 devtools::install_github(repo = "flr/FLCore", ref = "d55bc6570c0134c6bea6c3fc44be20378691e042")
