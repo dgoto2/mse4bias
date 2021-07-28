@@ -1,14 +1,15 @@
-#### RUN GRID TEST
+### ------------------------------------------------------------------------ ###
+### R script to a grid search using MSEs ####
+### ------------------------------------------------------------------------ ###
 
 ## REQUIRED ARGUMENTS
-
-# Iterations
+# iterations
 iters <- 1000
 
-# Years
+# projection period
 years <- 21
 
-# M selection
+# M (natural mortality) selection
 m_criterias <- c(0.2)
 
 # HCR options
@@ -21,24 +22,17 @@ m_criterias <- c(0.2)
 #n_workers <- 80
 
 ## ------------------
-
 Rargs <- ""
-
 extraArgsPar <- ""
 if (exists("n_workers"))
   extraArgsPar <- paste0(" par_env=2 n_workers=", n_workers, " nblocks=", n_workers)
-
-
 for( m_criteria in m_criterias ) {
-
   extraArgsAll <- ""
-
   extraArgsAll <- paste0(" m_criteria=", m_criteria)
-
   for(hcr in hcrs) {
     for(hcrcomb in hcr_combs)
       # Run scenario
-      system(paste0("Rscript ", Rargs, " run_mse.R iters=", iters," years=", years, " HCRoption=", hcr, " HCR_comb=", hcrcomb," TAC_constraint=0 BB=0 ", extraArgsAll, extraArgsPar))
+      system(paste0("Rscript ", Rargs, " run_mse.R iters=", iters," years=", years, " HCRoption=", 
+                    hcr, " HCR_comb=", hcrcomb," TAC_constraint=0 BB=0 ", extraArgsAll, extraArgsPar))
   }
 }
-
