@@ -1,11 +1,11 @@
 # Management Strategy Evaluation (MSE) using FLR
 
 ## Description
-NorthSea.saithe.MSE is a management strategy evaluation (MSE) framework for North Sea saithe (Pollachius virens) in Subareas 4, 6 and Division 3.a (North Sea, Rockall and West of Scotland, Skagerrak and Kattegat) developed using the Fisheries Library in R mse package as part of the Workshop on North Sea stocks Management Strategy Evaluation (WKNSMSE).
+NorthSea.saithe.MSE is a management strategy evaluation (MSE) framework originally developed for North Sea saithe (Pollachius virens) in Subareas 4, 6 and Division 3.a (North Sea, Rockall and West of Scotland, Skagerrak and Kattegat) using the Fisheries Library in R (FLR) mse package as part of the Workshop on North Sea stocks Management Strategy Evaluation (WKNSMSE).
 
 ## Prerequisites
 Install the following packages:
-```
+```{r, include = FALSE}
 install.packages(c("foreach", "DoParallel", "dplyr", "tidyr", "data.table")) 
 
 devtools::install_github(repo = "flr/FLCore", ref = "d55bc6570c0134c6bea6c3fc44be20378691e042")
@@ -26,12 +26,8 @@ devtools::install_github("shfischer/FLfse/FLfse", ref = "c561f5bf28cbad0f711ef53
 
 ## Core scripts to run simulations
 • OM.R creates the baseline operating model (OM)
-
 • a4a_mse_WKNSMSE_funs.R contains a collection of functions and methods used for creating the OM and for running the MSE
-
 • run_mse.R is for running MSE scenarios and is called from a job submission script
-
 • run_google.sh is a job submission script used on a high performance computing cluster and call run_mse.R
-
 • run_mse_analyse.R is for analyzing the MSE results
 
