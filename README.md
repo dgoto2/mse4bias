@@ -6,7 +6,7 @@ mse4bias is a management strategy evaluation (MSE) framework to evaluate managem
 ## Prerequisites
 Install the following packages:
 ```r
-install.packages(c("foreach", "DoParallel", "dplyr", "tidyr", "data.table")) 
+install.packages(c("foreach", "doParallel", "dplyr", "tidyr", "data.table")) 
 
 devtools::install_github(repo = "flr/FLCore", ref = "d55bc6570c0134c6bea6c3fc44be20378691e042")
 devtools::install_github(repo = "flr/FLash", ref = "7c47560cf57627068259404bb553f2b644682726")
@@ -27,7 +27,7 @@ devtools::install_github("shfischer/FLfse/FLfse", ref = "c561f5bf28cbad0f711ef53
 ## Core scripts to run simulations
 • OM.R creates the baseline operating model (OM)  
 • flr_mse_WKNSMSE_funs.R contains a collection of functions and methods used for creating the OM and for running the MSE  
-• run_mse.R is for running MSE scenarios and is called from a job submission script  
+• run_mse.R is for running MSE scenarios (assessment bias scenarios can be set in prop_biasN and prop_biasF) and is called from a job submission script  
 • run_mse.sh is a job submission script for a high performance computing cluster (HPC) to call run_mse.R  
 • analyse_mse.R is for analyzing the MSE results  
 
