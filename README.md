@@ -32,4 +32,4 @@ devtools::install_github("shfischer/FLfse/FLfse", ref = "c561f5bf28cbad0f711ef53
 • analyse_mse.R is for analyzing the MSE results  
 
 ## Reference
-Goto, D., J.A. Devine, I. Umar, S.H. Fischer, J.A.A. De Oliveira, D. Howell, E. Jardim, I. Mosqueira, K. Ono. 2021. Shaping sustainable harvest boundaries for marine populations despite estimation bias. Ecosphere. In press.
+Goto, D., J.A. Devine, I. Umar, S.H. Fischer, J.A.A. De Oliveira, D. Howell, E. Jardim, I. Mosqueira, K. Ono. 2022. [Shaping sustainable harvest boundaries for marine populations despite estimation bias. Ecosphere](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/ecs2.3923). 13(2): e3923. 
