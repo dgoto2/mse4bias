@@ -5,7 +5,7 @@ mse4bias is a management strategy evaluation (MSE) framework to evaluate managem
 
 This framework simulates population and harvest dynamics, surveys, assessments, and implementation of management strategies to explore trade-offs in achieving conservation-oriented (minimizing overexploitation risk) and harvest-oriented (maximizing yield) goals. The framework consists of submodels that simulate (1) true population and harvest dynamics at sea (operating model [OM]), from which observations through monitoring surveys and catch reporting (data generation) are made; and (2) management processes: assessments based on observations from the surveys and reported catch (using the State-space Assessment Model-SAM as estimation model (EM); https://github.com/fishfollower/SAM) and subsequent decisionmaking (management procedure, MP) based on the harvest control rule set for saithe ([ICES 2019]( https://www.ices.dk/sites/pub/Publication%20Reports/Advice/2019/2019/pok.27.3a46.pdf)).
 
-![alt text](https://github.com/dgoto2/mse4bias/blob/main/saithe.mse.png?raw=true) 
+<img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse.png?raw=true" width="500"> 
 
 (redrawn from https://github.com/ejardim; image credit: IAN Symbols, courtesy of the Integration and Application Network, University of Maryland Center for Environmental Science (ian.umces.edu/symbols/))
 
@@ -38,7 +38,7 @@ devtools::install_github("shfischer/FLfse/FLfse", ref = "c561f5bf28cbad0f711ef53
 • analyse_mse.R is for analyzing the MSE results  
 
 
-![alt text](https://github.com/dgoto2/mse4bias/blob/main/heatmap_optimHCR.png?raw=true) 
+<img src="https://github.com/dgoto2/mse4bias/blob/main/heatmap_optimHCR.png?raw=true" width="700"> 
 Optimization of the harvest control rule parameters (Ftarget and Btrigger) under varying levels (10% to 50%) of estimation bias in stock assessment (overestimation of stock abundance and underestimation of fishing mortality rate).
 
 
