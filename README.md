@@ -7,7 +7,7 @@ This framework simulates population and harvest dynamics, surveys, assessments, 
 
 <img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse.png?raw=true" width="500"> 
 
-(redrawn from https://github.com/ejardim; image credit: IAN Symbols, courtesy of the Integration and Application Network, University of Maryland Center for Environmental Science (ian.umces.edu/symbols/))
+##### (redrawn from https://github.com/ejardim; image credit: IAN Symbols, courtesy of the Integration and Application Network, University of Maryland Center for Environmental Science ([ian.umces.edu/symbols/](https://ian.umces.edu/media-library/symbols/)))
 
 ## Prerequisites
 Install the following packages:
@@ -39,7 +39,8 @@ devtools::install_github("shfischer/FLfse/FLfse", ref = "c561f5bf28cbad0f711ef53
 
 
 <img src="https://github.com/dgoto2/mse4bias/blob/main/heatmap_optimHCR.png?raw=true" width="800"> 
-Optimization of the harvest control rule parameters (Ftarget and Btrigger) under varying levels (10% to 50%) of estimation bias in stock assessment (overestimation of stock abundance and underestimation of fishing mortality rate).
+
+##### Optimization of the harvest control rule parameters (Ftarget and Btrigger) under varying levels (10% to 50%) of estimation bias in stock assessment (overestimation of stock abundance and underestimation of fishing mortality rate).
 
 
 ## Reference
