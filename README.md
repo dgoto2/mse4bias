@@ -33,7 +33,7 @@ devtools::install_github("shfischer/FLfse/FLfse", ref = "c561f5bf28cbad0f711ef53
 ## Core scripts to run simulations
 • OM.R creates the baseline operating model (OM)  
 • flr_mse_WKNSMSE_funs.R contains a collection of functions and methods used for creating the OM and for running the MSE  
-• run_mse.R is for specifying and running MSE scenarios (HCR parameters, TAC contraint, and banking & borrowing, see [ICES 2019](https://ices-library.figshare.com/articles/report/Workshop_on_North_Sea_Stocks_Management_Strategy_Evaluation_WKNSMSE_/18621668)) and is also called from a job submission script to run on a high-performance computing system  
+• run_mse.R is for specifying and running MSE scenarios (HCR parameters, TAC contraint, and banking & borrowing, see [ICES 2019](https://ices-library.figshare.com/articles/report/Workshop_on_North_Sea_Stocks_Management_Strategy_Evaluation_WKNSMSE_/18621668)) and is also called from a job submission script to run on a high-performance computing cluster  
 ```r
 ### set HCR option: A, B, C
 if (exists("HCRoption")) {
