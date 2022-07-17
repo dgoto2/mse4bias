@@ -202,7 +202,7 @@ for( m_criteria in m_criterias ) {
 ```
 
 #### Example output of MSE simualtions (1000 replicates, 21 forecast years). Projected stock and harvest dynamics under the baseline (no bias) scenario. 
-<img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse_ts.png?raw=true" width="500"> 
+<img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse_ts.png?raw=true" width="600"> 
 
 #### Example output of MSE simualtions with alternative OMs with varying natural mortality rates (M = 0.1-0.3)
 <img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse_alt.oms.png?raw=true" width="500"> 
