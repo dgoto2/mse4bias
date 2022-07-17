@@ -160,7 +160,7 @@ if (!is.null(input$iem)) {
 
 ```
 
-Once the MSE scenraios are specified the following parameters (in run_mse_grid_distr.R) need to be specified to run simulations. Currently, two alternative OMs (with differnt values of natural mortality rates; M = 0.1 and 0.3) can also be optionally run:
+Once the MSE scenarios are specified the following parameters (in run_mse_grid_distr.R) need to be specified to run simulations. Currently, two alternative OMs (with differnt values of natural mortality rates; M = 0.1 and 0.3) can also be optionally run:
 
 ```r
 
