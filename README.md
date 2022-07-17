@@ -5,7 +5,7 @@ mse4bias is a management strategy evaluation (MSE) framework to evaluate managem
 
 This framework simulates population and harvest dynamics, surveys, assessments, and implementation of management strategies to explore trade-offs in achieving conservation-oriented (minimizing overexploitation risk) and harvest-oriented (maximizing yield) goals. The framework consists of submodels that simulate (1) true population and harvest dynamics at sea (operating model [OM]), from which observations through monitoring surveys and catch reporting (data generation) are made; and (2) management processes: assessments based on observations from the surveys and reported catch (using the State-space Assessment Model-SAM as estimation model (EM); https://github.com/fishfollower/SAM) and subsequent decisionmaking (management procedure, MP) based on the harvest control rule set for saithe ([ICES 2019]( https://www.ices.dk/sites/pub/Publication%20Reports/Advice/2019/2019/pok.27.3a46.pdf)).
 
-<img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse.png?raw=true" width="500"> 
+<img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse.png?raw=true" width="700"> 
 
 ###### (redrawn from https://github.com/ejardim; image credit: IAN Symbols, courtesy of the Integration and Application Network, University of Maryland Center for Environmental Science ([ian.umces.edu/symbols/](https://ian.umces.edu/media-library/symbols/)))
 
@@ -33,7 +33,10 @@ devtools::install_github("shfischer/FLfse/FLfse", ref = "c561f5bf28cbad0f711ef53
 ## Core scripts to run simulations
 • OM.R creates the baseline operating model (OM)  
 • flr_mse_WKNSMSE_funs.R contains a collection of functions and methods used for creating the OM and for running the MSE  
-• run_mse.R is for specifying and running MSE scenarios (HCR parameters, TAC contraint, and banking & borrowing, see [ICES 2019](https://ices-library.figshare.com/articles/report/Workshop_on_North_Sea_Stocks_Management_Strategy_Evaluation_WKNSMSE_/18621668)) and is also called from a job submission script to run on a high-performance computing cluster  
+• run_mse.R is for specifying and running MSE scenarios (HCR parameters, TAC contraint, and banking & borrowing, see pp. 2-5 in [ICES 2019](https://ices-library.figshare.com/articles/report/Workshop_on_North_Sea_Stocks_Management_Strategy_Evaluation_WKNSMSE_/18621668) for details) and is also called from a job submission script to run on a high-performance computing cluster 
+
+In run_mse.R;
+
 ```r
 ### set HCR option: A, B, C
 if (exists("HCRoption")) {
@@ -156,6 +159,55 @@ if (!is.null(input$iem)) {
 }
 
 ```
+
+Once the MSE scenraios are specified the following parameters (in run_mse_grid_distr.R) need to be specified to run simulations. Currently, two alternative OMs (with differnt values of natural mortality rates; M = 0.1 and 0.3) can also be optionally run:
+
+```r
+
+## REQUIRED ARGUMENTS
+# iterations
+iters <- 10 # for higher numbers of replicates (e.g., 1000), HPCs would be recommended
+
+# projection period
+years <- 21
+
+# M (natural mortality) selection
+m_criterias <- c(0.2) # baseline
+
+# HCR options
+hcrs <- c(1)
+
+# HCR combs
+hcr_combs <- c(1:25)
+
+# parallel workers (for HPC runs)
+n_workers <- 90
+
+## ------------------
+Rargs <- ""
+extraArgsPar <- ""
+if (exists("n_workers"))
+  extraArgsPar <- paste0(" par_env=2 n_workers=", n_workers, " nblocks=", n_workers)
+for( m_criteria in m_criterias ) {
+  extraArgsAll <- ""
+  extraArgsAll <- paste0(" m_criteria=", m_criteria)
+  for(hcr in hcrs) {
+    for(hcrcomb in hcr_combs)
+      # Run scenario
+      system(paste0("Rscript ", Rargs, " run_mse.R iters=", iters," years=", years, " HCRoption=", 
+                    hcr, " HCR_comb=", hcrcomb," TAC_constraint=0 BB=0 ", extraArgsAll, extraArgsPar))
+  }
+}
+
+```
+
+#### Example output of MSE simualtions (1000 replicates, 21 forecast years). Projected stock and harvest dynamics under the baseline (no bias) scenario. 
+<img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse_ts.png?raw=true" width="500"> 
+
+#### Example output of MSE simualtions with alternative OMs with varying natural mortality rates (M = 0.1-0.3)
+<img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse_alt.oms.png?raw=true" width="500"> 
+
+
 
 • run_mse.sh is a job submission script for a high performance computing cluster (HPC) to call run_mse.R  
 • analyse_mse.R is for analyzing the MSE results  
