@@ -230,9 +230,9 @@ if (!is.null(input$iem)) {
 }
 
 ### ------------------------------------------------------------------------ ###
-### specify the level of bias in assessment
-input$ctrl.mp$ctrl.est@args$prop_biasN <- 1.0+prop_biasN ## bias in N from SAM fit
-input$ctrl.mp$ctrl.est@args$prop_biasF <- 1.0+prop_biasF ## bias in F from SAM fit
+### specify the levels of bias in assessment
+input$ctrl.mp$ctrl.est@args$prop_biasN <- 1.0+prop_biasN ## bias in N-at-age from sam fit
+input$ctrl.mp$ctrl.est@args$prop_biasF <- 1.0+prop_biasF ## bias in F-at-age from sam fit
 
 ### ------------------------------------------------------------------------ ###
 ### run MSE ####

@@ -4,7 +4,7 @@
 
 ### install the stockassessment R package if needed
 # source("http://flr-project.org/R/instFLR.R")
-devtools::install_github("fishfollower/SAM/stockassessment", ref="biomassindex") 
+#devtools::install_github("fishfollower/SAM/stockassessment", ref="biomassindex") 
 
 ### load required packages
 library(FLa4a)
@@ -561,8 +561,8 @@ ctrl_obj <- mpCtrl(list(
                        forecast = TRUE, 
                        fwd_trgt = "fsq", fwd_yrs = 1, 
                        pok_stf_def,
-                       prop_biasN = 1.0,
-                       prop_biasF = 1.0,
+                       prop_biasN = 1.0,## bias in N-at-age from SAM fit
+                       prop_biasF = 1.0,## bias in F-at-age from SAM fit
                        
                        ### speeding SAM up
                        newtonsteps = 0, rel.tol = 0.001,

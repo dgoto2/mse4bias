@@ -255,8 +255,8 @@ oem_WKNSMSE <- function(stk,
 ### this makes used of the SAM wrapper in FLfse,
 ### which in turn calls SAM from the package stockassessment
 SAM_wrapper <- function(stk, idx, tracking,
-                        prop_biasN = 1.0,
-                        prop_biasF = 1.0,
+                        prop_biasN = 1.0,## bias in N-at-age in SAM fit
+                        prop_biasF = 1.0,## bias in F-at-age in SAM fit
                         genArgs, ### contains ay (assessment year)
                         forecast = FALSE,
                         fwd_trgt = "fsq", ### what to target in forecast
@@ -291,27 +291,19 @@ SAM_wrapper <- function(stk, idx, tracking,
                  conf_full = TRUE, DoParallel = parallel, ...)
 
   
-  ### add a bias to stock N and F from sam fits
+  ### add a bias to stock N-at-age and F-at-age from sam fits
   ssb_sam <- array(NA, dim=c(length(fit), 9))
   for (i in 1:length(fit)) {
     if (!is.null(fit[i]) & length(fit[i][[1]]$sdrep$estY)>0) {
-      fit[i][[1]]$sdrep$estY[1:8] <- fit[i][[1]]$sdrep$estY[1:8] + log(prop_biasN) ## adding a bias in stock number at age
-      fit[i][[1]]$sdrep$estY[9:15] <- fit[i][[1]]$sdrep$estY[9:15] + log(prop_biasF) ## adding a bias in F at age
+      fit[i][[1]]$sdrep$estY[1:8] <- fit[i][[1]]$sdrep$estY[1:8] + log(prop_biasN)   
+      fit[i][[1]]$sdrep$estY[9:15] <- fit[i][[1]]$sdrep$estY[9:15] + log(prop_biasF) 
       
-      ### save ssb from each ay for retrospective analysis
-      ssb_sam[i,] <- ssbtable(fit[i][[1]])[(length(ssbtable(fit[i][[1]])[,1])-8):length(ssbtable(fit[i][[1]])[,1]),1] ## storing sam ests for all years
+      ### save ssbs from ay+previous years for retrospective analysis
+      ssb_sam[i,] <- ssbtable(fit[i][[1]])[(length(ssbtable(fit[i][[1]])[,1])-8):length(ssbtable(fit[i][[1]])[,1]),1] 
     }
   }
   colnames(ssb_sam) <- fit[1][[1]]$data$years[(length(fit[1][[1]]$data$years)-8):length(fit[1][[1]]$data$years)]
 
-  # ### store ssbs from each annual assessment
-  # for (j in 1:(iters/length(fit))) {
-  #   if (!is.na(ssb_sam)) {ssb_sam_all[(1+(length(fit)*(j-1))):(length(fit)*j), ] <- ssb_sam}
-  # }
-  # colnames(ssb_sam) <- fit[1][[1]]$data$years[(length(fit[1][[1]]$data$years)-8):length(fit[1][[1]]$data$years)]
-  # ssb_label <- paste0("ssb_", ay)
-  # attr(tracking@units, ssb_label) <- ssb_sam_all
-  
   
   ### store parameter values and provide them as initial values next year
   ### store in tracking object, this is the only object which does not get 
