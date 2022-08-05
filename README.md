@@ -159,7 +159,11 @@ if (!is.null(input$iem)) {
 }
 
 ```
-
+Assessment biases (positive or negative) in N-at-age and F-at-age are specified as
+```r
+input$ctrl.mp$ctrl.est@args$prop_biasN <- 1.0+prop_biasN 
+input$ctrl.mp$ctrl.est@args$prop_biasF <- 1.0+prop_biasF 
+```
 Once the MSE scenarios are specified the following parameters (in `run_mse_grid_distr.R`) need to be specified to run simulations. Currently, two alternative OMs (with differnt values of natural mortality rates; M = 0.1 and 0.3) can also be optionally run:
 
 ```r
