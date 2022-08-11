@@ -3,7 +3,7 @@
 ## Description
 mse4bias is a management strategy evaluation (MSE) framework to evaluate management implications of persistent estimation bias in stock assessment and re-optimize harvest control rules (HCR). The framework was originally developed (2018) using the [Fisheries Library in R (FLR) mse package](https://github.com/flr/mse) for North Sea saithe (Pollachius virens) in Subareas 4, 6 and Division 3.a (North Sea, Rockall and West of Scotland, Skagerrak and Kattegat) as part of the [Workshop on North Sea stocks Management Strategy Evaluation (WKNSMSE)](https://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/Fisheries%20Resources%20Steering%20Group/2019/WKNSMSE/ICES%20WKNSMSE%20Report%202019.pdf).
 
-This framework simulates population and harvest dynamics, surveys, assessments, and implementation of management strategies to explore trade-offs in achieving conservation-oriented (minimizing overexploitation risk) and harvest-oriented (maximizing yield) goals. The framework consists of submodels that simulate (1) true population and harvest dynamics at sea (operating model [OM]), from which observations through monitoring surveys and catch reporting (data generation) are made; and (2) management processes: assessments based on observations from the surveys and reported catch (using the State-space Assessment Model-SAM as estimation model (EM); https://github.com/fishfollower/SAM) and subsequent decisionmaking (management procedure, MP) based on the harvest control rule set for saithe ([ICES 2019]( https://www.ices.dk/sites/pub/Publication%20Reports/Advice/2019/2019/pok.27.3a46.pdf)).
+This framework simulates population and harvest dynamics, surveys, assessments, and implementation of management strategies to explore trade-offs in achieving conservation-oriented (minimizing overexploitation risk) and harvest-oriented (maximizing yield) goals. The framework consists of submodels that simulate (1) true population and harvest dynamics at sea (operating model [OM]), from which observations through monitoring surveys and catch reporting (data generation) are made; and (2) management processes: assessments based on observations from the surveys and reported catch (using the [State-space Assessment Model-SAM](https://github.com/fishfollower/SAM) as estimation model (EM)) and subsequent decisionmaking (management procedure, MP) based on the harvest control rule set for saithe ([ICES 2019]( https://www.ices.dk/sites/pub/Publication%20Reports/Advice/2019/2019/pok.27.3a46.pdf)).
 
 <img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse.png?raw=true" width="700"> 
 
@@ -159,7 +159,7 @@ if (!is.null(input$iem)) {
 }
 
 ```
-Assessment biases (positive or negative) in N-at-age and F-at-age are specified as
+Assessment biases (positive or negative) in N-at-age and F-at-age (see [Goto et al. 2022](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/ecs2.3923) for more details) are specified as
 ```r
 input$ctrl.mp$ctrl.est@args$prop_biasN <- 1.0+prop_biasN 
 input$ctrl.mp$ctrl.est@args$prop_biasF <- 1.0+prop_biasF 
@@ -218,6 +218,10 @@ for( m_criteria in m_criterias ) {
 
 
 #### Example output of HCR (re)optimization for biased assessments
+<img src="https://github.com/dgoto2/mse4bias/blob/main/saithe.mse.bias.png?raw=true" width="800"> 
+
+###### Short (a) and long (b)-term averages of spawning stock biomass (SSB) and fishing mortality rate from the operating model (OM) and estimation (assessment) model (EM) under varying levels (10% to 50%) of estimation bias in stock assessment 
+
 <img src="https://github.com/dgoto2/mse4bias/blob/main/heatmap_optimHCR.png?raw=true" width="800"> 
 
 ###### Optimization of the harvest control rule parameters (Ftarget and Btrigger) under varying levels (10% to 50%) of estimation bias in stock assessment (overestimation of stock abundance and underestimation of fishing mortality rate). Black boxes indicate maximum catches.
